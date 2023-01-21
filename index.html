@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link rel="stylesheet" href="src/style.css">
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="src/style.css">
     <title>Weather App</title>
 
 </head>
@@ -17,10 +18,10 @@
         <div class="weather-app-wrapper">
             <div class="weather-app">
                 <div class="overview">
-                    <h1>New York</h1>
+                    <h1><span id="city">New York</span></h1>
                     <ul>
-                        <li> Friday 05:00</li>
-                        <li>Clear</li>
+                        <li><span id="time">Friday 05:00</span></li>
+                        <li><span id="description">Clear</span></li>
                     </ul>
                 </div>
                 <div class="row">
@@ -32,9 +33,9 @@
                     </div>
                     <div class="col-6">
                         <ul>
-                            <li>Percipitation: 0%</li>
-                            <li>Humidity: 73%</li>
-                            <li>Wind: 2km/h</li>
+                            <li>Feels like: <span id="feel"></span>&deg</li>
+                            <li>Humidity: <span id="humidity"></span>%</li>
+                            <li>Wind: <span id="wind"></span>/mph</li>
                         </ul>
                     </div>
                 </div><small>
