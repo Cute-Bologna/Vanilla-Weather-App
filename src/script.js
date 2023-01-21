@@ -10,19 +10,25 @@ function formatDate(timestamp) {
   }
   if (hours < 10) {
     hours = `0${hours}`;
-
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   let day = date.getDay();
   return `${day}, ${hours}:${minutes}`;
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -35,12 +41,9 @@ function displayTemperature(response) {
   humidityElement.innerHTML = response.data.temperature.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   feelElement.innerHTML = Math.round(response.data.temperature.feels_like);
-
 }
 
 let apiKey = "6d2f7310aaa7a0o47bf2b04d763t6f29";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=New_York&key=6d2f7310aaa7a0o47bf2b04d763t6f29&units=imperial`;
-
-console.log(apiUrl);
 
 axios.get(apiUrl).then(displayTemperature);
