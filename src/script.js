@@ -33,7 +33,7 @@ function displayTemperature(response) {
   let feelElement = document.querySelector("#feel");
   let dateElement = document.querySelector("#time");
   let iconElement = document.querySelector("#icon");
-  
+
   fahrenheitTemperature = response.data.temperature.current;
 
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
@@ -52,33 +52,29 @@ function search(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
 
   axios.get(apiUrl).then(displayTemperature);
-
 }
 
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
-  
-
 }
 
 function displayCelsiusTemperature(event) {
-event.preventDefault();
-let temperatureElement = document.querySelector("#temperature");
-fahrenheitLink.classList.remove("active");
-celsiusLink.classList.add("active");
-let celsiusTemperature = (fahrenheitTemperature) - 32;
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  let celsiusTemperature = fahrenheitTemperature - 32;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
- fahrenheitLink.classList.add("active");
+  fahrenheitLink.classList.add("active");
   celsiusLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-
 }
 
 let fahrenheitTemperature = null;
@@ -89,7 +85,7 @@ form.addEventListener("submit", handleSubmit);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link")
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 search("New York");
